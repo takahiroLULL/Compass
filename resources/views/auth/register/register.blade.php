@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="mt-3">
-            <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
+            <label class="m-0 d-block" style="font-size:13px">メールアドレ</label>
             <div class="border-bottom border-primary">
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
             </div>
