@@ -24,7 +24,18 @@ class UsersTableSeeder extends Seeder
                 'sex' => "1",
                 'birth_day' => "1998-02-11",
                 'role' => "1",
-            ]   
+            ],
+            [
+                'over_name' => "高木",
+                'under_name' =>"広矢",
+                'over_name_kana' => "タカギ",
+                'under_name_kana' => "ヒロヤ",
+                'mail_address' => "hiro.ne.jp",
+                'password' => bcrypt("4321"),
+                'sex' => "1",
+                'birth_day' => "1998-03-11",
+                'role' => "4",
+            ],
         ]);
     }
 }
