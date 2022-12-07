@@ -16,6 +16,7 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson()) {
             return route('loginView');
+            // routeであればroutename、redirectだったら/〇〇と記述
         }
     }
 }
