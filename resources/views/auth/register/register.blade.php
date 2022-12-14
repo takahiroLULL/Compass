@@ -162,7 +162,7 @@
           </select>
           <label style="font-size:13px">月</label>
         </div>
-        @error('date_time')
+        @error('birth_day')
   <p class="text-danger">{{$message}}</p>
 @enderror
 

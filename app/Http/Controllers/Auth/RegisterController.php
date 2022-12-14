@@ -61,7 +61,7 @@ class RegisterController extends Controller
 
     public function registerPost(RegisterFormRequest $request)
     {
-        DB::beginTransaction();
+        // DB::beginTransaction();
         try{
             $old_year = $request->old_year;
             $old_month = $request->old_month;
@@ -82,11 +82,14 @@ class RegisterController extends Controller
                 'password' => bcrypt($request->password)
             ]);
             $user = User::findOrFail($user_get->id);
+            if($request->role == 4){
             $user->subjects()->attach($subjects);
-            DB::commit();
+            //                中間テーブルにDTを入れている
+        }
+            // DB::commit();
             return view('auth.login.login');
         }catch(\Exception $e){
-            DB::rollback();
+            // DB::rollback();
             return redirect()->route('loginView');
         }
     }
