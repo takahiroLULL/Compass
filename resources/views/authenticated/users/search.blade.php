@@ -43,7 +43,9 @@
       </div>
       <div>
         @if($user->role == 4)
-        <span>選択科目 :</span>
+        <!-- @if(!empty(subject_id)) -->
+        <span>選択科目:{{$user->Pivot->subject_id}}</span>
+        <!-- @endif -->
         @endif
       </div>
     </div>
