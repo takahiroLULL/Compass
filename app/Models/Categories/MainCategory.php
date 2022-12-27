@@ -13,6 +13,7 @@ class MainCategory extends Model
     ];
 
     public function subCategories(){
+        return $this->belongsTomany('App\Category\SubCategory');
         // リレーションの定義
     }
 
