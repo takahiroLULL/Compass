@@ -13,7 +13,7 @@ class MainCategory extends Model
     ];
 
     public function subCategories(){
-        return $this->belongsTomany('App\Category\SubCategory');
+        return $this->belongsTomany('SubCategory','sub_categories','main_categories.main_category','sub_categories.main_category_id');
         // リレーションの定義
     }
 
