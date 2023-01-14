@@ -13,7 +13,7 @@ class SubCategory extends Model
         'sub_category',
     ];
     public function mainCategory(){
-        return $this->hasmany('App\Category\MainCategory');
+        return $this->belongsTo('App\Categories\MainCategory');
     }
 
     public function posts(){

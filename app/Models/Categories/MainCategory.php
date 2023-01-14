@@ -4,6 +4,8 @@ namespace App\Models\Categories;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class MainCategory extends Model
 {
     const UPDATED_AT = null;
@@ -13,7 +15,7 @@ class MainCategory extends Model
     ];
 
     public function subCategories(){
-        return $this->belongsTomany('SubCategory','sub_categories','main_categories.main_category','sub_categories.main_category_id');
+        return $this->hasmany('App\Categories\SubCategory');
         // リレーションの定義
     }
 
