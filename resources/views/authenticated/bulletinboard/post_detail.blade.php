@@ -14,7 +14,8 @@
           </div>
           @endif
         </div>
-
+        
+        
         <div class="contributor d-flex">
           <p>
             <span>{{ $post->user->over_name }}</span>
@@ -50,6 +51,9 @@
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
         <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
         <form action="{{ route('comment.create') }}" method="post" id="commentRequest">{{ csrf_field() }}</form>
+        @error('comment')
+        <p class="text-danger">{{$message}}</p>
+@enderror
       </div>
     </div>
   </div>
