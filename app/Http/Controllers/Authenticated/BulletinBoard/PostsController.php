@@ -37,6 +37,12 @@ class PostsController extends Controller
         }else if($request->my_posts){
             $posts = Post::with('user', 'postComments')
             ->where('user_id', Auth::id())->get();
+        }else if($request->sub_category){
+            $sub_category = $request->sub_category;
+            // dd($sub_category);
+            $posts = Post::with('user', 'postComments')->whereHas('subCategories',function($q) use ($sub_category){
+                $q->where('sub_category',$sub_category);
+            })->get();
         }
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
@@ -55,9 +61,11 @@ class PostsController extends Controller
     public function postCreate(PostFormRequest $request){
         $post = Post::create([
             'user_id' => Auth::id(),
+            'post_category_id' => $request->post_category_id,
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
+        $post->subCategories()->attach($post);
         return redirect()->route('post.show');
     }
 

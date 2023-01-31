@@ -54,7 +54,7 @@
         <select type="text" class="w-100" name="main_category_id" form="subCategoryRequest">
           <option>---</option>
         @foreach($main_categories as $main_category)
-          <option label="{{ $main_category->main_category }}" value="{{ $main_category->id }}"></option>
+          <option value="{{ $main_category->id }}" >{{ $main_category->main_category }}</option>
           @endforeach
         </select>
         @error('main_category_id')

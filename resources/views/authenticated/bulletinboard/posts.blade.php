@@ -7,9 +7,6 @@
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
-      @foreach($post->subCategories as $subCcategory)
-      <p>{{$subCategory->sub_category}}</p>
-      @endforeach
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
@@ -18,10 +15,13 @@
           </div>
           <div>
             @if(Auth::user()->is_Like($post->id))
-            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{$like->likeCounts($post->id)}}</span></p>
             @else
-            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{$like->likeCounts($post->id)}}</span></p>
             @endif
+            @foreach($post->subCategories as $category)
+             <span class="category_btn">{{$category->sub_category}}</spna>
+            @endforeach
           </div>
         </div>
       </div>
@@ -39,13 +39,18 @@
       <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
       <ul>
         @foreach($categories as $category)
-        <article>
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+        <nav menu="menu">
+          <div class="menu-item">
+        <div class="menu-item-btn"><p class="m-0 search_conditions"><span>{{ $category->main_category }}</span></p></div>
+        <div class="search_conditions_inner">
         @foreach($category->subCategories as $sub_category)
-        <input type="submit" name="my_posts" class="category_btn" value="{{$sub_category->sub_category}}" form="postSearchRequest"></li>
+        <ul>
+        <input type="submit" name="sub_category" class="category_btn" value="{{$sub_category->sub_category}}" form="postSearchRequest"></li>
+        </ul>
           @endforeach
-
-</article>
+</div>
+          </div>
+          </nav>
         @endforeach
       </ul>
     </div>
