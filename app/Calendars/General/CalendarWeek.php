@@ -13,7 +13,7 @@ class CalendarWeek{
   }
 
   function getClassName(){
-    return "week-" . $this->index;
+    return "week-" . $this->index;//クラスをつけるメソッド　過去の日付とかを処理する
   }
 
   /**
@@ -23,10 +23,10 @@ class CalendarWeek{
    function getDays(){
      $days = [];
 
-     $startDay = $this->carbon->copy()->startOfWeek();
-     $lastDay = $this->carbon->copy()->endOfWeek();
-     $tmpDay = $startDay->copy();
-     while($tmpDay->lte($lastDay)){
+     $startDay = $this->carbon->copy()->startOfWeek();//週の開始日
+     $lastDay = $this->carbon->copy()->endOfWeek();//週の終了日
+     $tmpDay = $startDay->copy();//作業用の日
+     while($tmpDay->lte($lastDay)){//開始日から終了日〜日曜日をループ
        if($tmpDay->month != $this->carbon->month){
          $day = new CalendarWeekBlankDay($tmpDay->copy());
          $days[] = $day;

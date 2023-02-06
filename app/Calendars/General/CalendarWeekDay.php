@@ -15,9 +15,9 @@ class CalendarWeekDay{
   function getClassName(){
     return "day-" . strtolower($this->carbon->format("D"));
   }
-
+  //過去日をグレーにするメソッド    
   function pastClassName(){
-    return;
+    return "past-day";
   }
 
   /**

@@ -14,6 +14,7 @@ use DB;
 class CalendarsController extends Controller
 {
     public function show(){
+        // 'time'=>現在時刻、今月のカレンダーを用意する
         $calendar = new CalendarView(time());
         return view('authenticated.calendar.general.calendar', compact('calendar'));
     }
