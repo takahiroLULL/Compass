@@ -61,17 +61,31 @@ class CalendarView{
             $reservePart = "リモ3部";
           }
           if($startDay <= $day->everyDay() && $toDay > $day->everyDay()){
-            $html[] = '<p class="m-auto p-0 w-70" style="font-size:12px">'.$reservePart .'参加</p>';//何部参加を表示
+        
+            $html[] = '<p class="m-auto p-0 w-70" style="font-size:12px">'.$reservePart .'参加</p>';//何部参加したかを表示
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
+            $html[] = '<button type="submit"
+             class="btn btn-danger p-0 w-75 js-modal-open" 
+             name="delete_date" 
+             style="font-size:12px"  
+             value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" 
+             day="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"
+             reservePart="予約：'.$reservePart.'">
+             '. $reservePart .'
+             </button>';
+            $html[] = '<a class="js-modal-open" day="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"
+            reservePart="予約：'.$reservePart.'" >';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            // $html[] = '<p class="modal js-modal modal__bg js-modal-close modal__content 
+            // name="reservePart">';
+
           }
         }else{//予約してなかったら
           if($startDay <= $day->everyDay() && $toDay > $day->everyDay()){//予約していない人（過去）
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-          }else{//予約してない人（今日いこう）
+          }else{//予約してない人（今日以降）
           $html[] = $day->selectPart($day->everyDay());
           }
         }
