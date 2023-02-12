@@ -19,8 +19,9 @@
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close">
             <div class="modal__content">
-            <p class="">予約日:<span name="modal_day"></span></p>
-            <p>時間:<span name="modal_reservePart"></span></p>
+            <p class="">予約日:<span class="modal_day"></span></p>
+            <p>時間:<span class="modal_reservePart"></span></p>
+            <!-- .はクラス名なのでnameではなく、classとやるのが正 -->
             <p>上記の予約をキャンセルしていいですか？</p>
             <div class="w-50 m-auto edit-modal-btn d-flex">
             <a class="js-modal-close btn btn-primary  d-inline-block" href="">閉じる</a>

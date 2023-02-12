@@ -71,15 +71,10 @@ class CalendarView{
              style="font-size:12px"  
              value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" 
              day="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"
-             reservePart="予約：'.$reservePart.'">
+             reservePart="'.$reservePart.'">
              '. $reservePart .'
              </button>';
-            $html[] = '<a class="js-modal-open" day="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"
-            reservePart="予約：'.$reservePart.'" >';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-            // $html[] = '<p class="modal js-modal modal__bg js-modal-close modal__content 
-            // name="reservePart">';
-
           }
         }else{//予約してなかったら
           if($startDay <= $day->everyDay() && $toDay > $day->everyDay()){//予約していない人（過去）

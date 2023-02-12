@@ -11,6 +11,7 @@ $(function(){
 
     $('.modal_reservePart').text(reservePart);
 
+    //.->クラス名を表す
     return false;
 });
 
