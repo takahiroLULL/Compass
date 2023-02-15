@@ -17,17 +17,24 @@
 </div>
 
 <div class="modal js-modal">
+
   <div class="modal__bg js-modal-close">
-            <div class="modal__content">
-            <p class="">予約日:<span class="modal_day"></span></p>
-            <p>時間:<span class="modal_reservePart"></span></p>
-            <!-- .はクラス名なのでnameではなく、classとやるのが正 -->
-            <p>上記の予約をキャンセルしていいですか？</p>
-            <div class="w-50 m-auto edit-modal-btn d-flex">
-            <a class="js-modal-close btn btn-primary  d-inline-block" href="">閉じる</a>
-            <input type="submit" class="btn btn-danger d-block" value="キャンセル" onclick="return confirm('キャンセルしますか？')">
+    <div class="modal__content">
+      <p class="">予約日:
+        <span class="modal_day" name="getPart"></span>
+      </p>
+      <p>時間:
+        <span class="modal_reservePart" name="getDate"></span>
+      </p>
+      <!-- .はクラス名なのでnameではなく、classとやるのが正 -->
+      <p>上記の予約をキャンセルしていいですか？</p>
+        <div class="w-50 m-auto edit-modal-btn d-flex">
+      <a class="js-modal-close btn btn-primary  d-inline-block" href="">閉じる</a>
+      <input type="hidden" name="id">
+      <input type="submit" class="btn btn-danger  d-inline-block" form ="deleteParts" onclick="return confirm('キャンセルしますか？')" value="キャンセル" >
+        </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-</div>
+<form action = "/delete/calendar" method = "post" id ="deleteParts">
 @endsection

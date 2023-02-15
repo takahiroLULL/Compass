@@ -7,9 +7,13 @@ $(function(){
 
     var reservePart = $(this).attr('reservePart');
 
+    var id = $(this).attr('id');
+
     $('.modal_day').text(day);
 
     $('.modal_reservePart').text(reservePart);
+
+    $('.modal_id').val(id);
 
     //.->クラス名を表す
     return false;

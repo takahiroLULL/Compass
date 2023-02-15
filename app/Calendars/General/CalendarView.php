@@ -71,7 +71,8 @@ class CalendarView{
              style="font-size:12px"  
              value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" 
              day="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"
-             reservePart="'.$reservePart.'">
+             reservePart="'.$reservePart.'"
+             id="'.$day->authReserveDate($day->everyDay())->first()->id.'">
              '. $reservePart .'
              </button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
