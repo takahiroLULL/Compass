@@ -18,7 +18,7 @@
 
 <div class="modal js-modal">
 
-  <div class="modal__bg js-modal-close">
+  <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
       <p class="">予約日:
         <span class="modal_day" name="getPart"></span>
@@ -30,11 +30,12 @@
       <p>上記の予約をキャンセルしていいですか？</p>
         <div class="w-50 m-auto edit-modal-btn d-flex">
       <a class="js-modal-close btn btn-primary  d-inline-block" href="">閉じる</a>
-      <input type="hidden" name="id">
+      <input type="hidden" class="modal_reservePart_id " form ="deleteParts" name="reservePart_id">
+      <input type="hidden" class="modal_day_id " form ="deleteParts" name="day_id">
       <input type="submit" class="btn btn-danger  d-inline-block" form ="deleteParts" onclick="return confirm('キャンセルしますか？')" value="キャンセル" >
         </div>
     </div>
   </div>
 </div>
-<form action = "/delete/calendar" method = "post" id ="deleteParts">
+<form action = "/delete/calendar" method = "post" id ="deleteParts"><!--実はこれいらない。view.phpにあるから-->
 @endsection

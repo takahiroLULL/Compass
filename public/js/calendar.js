@@ -13,6 +13,10 @@ $(function(){
 
     $('.modal_reservePart').text(reservePart);
 
+    $('.modal_day_id').val(day);
+
+    $('.modal_reservePart_id').val(reservePart);
+
     $('.modal_id').val(id);
 
     //.->クラス名を表す

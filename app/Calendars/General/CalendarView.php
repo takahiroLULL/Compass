@@ -69,8 +69,8 @@ class CalendarView{
              class="btn btn-danger p-0 w-75 js-modal-open" 
              name="delete_date" 
              style="font-size:12px"  
-             value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" 
-             day="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"
+             cancel="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" 
+             day="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'" 
              reservePart="'.$reservePart.'"
              id="'.$day->authReserveDate($day->everyDay())->first()->id.'">
              '. $reservePart .'
