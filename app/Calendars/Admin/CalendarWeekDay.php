@@ -31,16 +31,15 @@ class CalendarWeekDay{
 
     $html[] = '<div class="text-left">';
     if($one_part){
-      $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+      $html[] = '<a href="" class="day_part m-0 pt-1"><p>1部</p></a>';
     }
     if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+      $html[] = '<a href="" class="day_part m-0 pt-1"><p>2部</p></a>';
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+      $html[] = '<a href="" class="day_part m-0 pt-1"><p>3部</p></a>';
     }
     $html[] = '</div>';
-
     return implode("", $html);
   }
 
