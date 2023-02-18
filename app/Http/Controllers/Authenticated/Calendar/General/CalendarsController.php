@@ -21,7 +21,7 @@ class CalendarsController extends Controller
 
     public function reserve(Request $request){
         DB::beginTransaction();//DBに直接接続する。
-        dd($request);
+        // dd($request);
         try{
             $getPart = $request->getPart;//○日
             $getDate = $request->getData;//〇〇〇〇-〇〇-〇〇
@@ -39,18 +39,19 @@ class CalendarsController extends Controller
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request )
     {
-        dd($request);
         $id = $request->day_id;
-        $reservePart = $request->reservePart_id;
-        // dd($id);
-        // dd($reservePart);
-        \DB::table('reserve_settings')
-            ->where($reservePart, $id)
-            ->delete();
+        $reservePartNumber = $request->reservePart_id;
+        $reservePart =
+        ReserveSettings::where('setting_reserve', $id)
+        ->where('setting_part', $reservePartNumber)
+        ->first();
+        
+        $reservePart->increment('limit_users');
+        $reservePart->users()->detach(Auth::id());
 
-            return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
+        return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
 
 }

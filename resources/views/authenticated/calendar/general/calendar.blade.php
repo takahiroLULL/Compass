@@ -21,21 +21,21 @@
   <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
       <p class="">予約日:
-        <span class="modal_day" name="getPart"></span>
+        <span class="day" name="getPart"></span>
       </p>
       <p>時間:
-        <span class="modal_reservePart" name="getDate"></span>
+        <span class="reservePart" name="getDate"></span>
       </p>
       <!-- .はクラス名なのでnameではなく、classとやるのが正 -->
       <p>上記の予約をキャンセルしていいですか？</p>
         <div class="w-50 m-auto edit-modal-btn d-flex">
       <a class="js-modal-close btn btn-primary  d-inline-block" href="">閉じる</a>
-      <input type="hidden" class="modal_reservePart_id " form ="deleteParts" name="reservePart_id">
-      <input type="hidden" class="modal_day_id " form ="deleteParts" name="day_id">
+      <input type="hidden" class="reservePart_id " form ="deleteParts" name="reservePart_id"><!--予約した時間-->
+      <input type="hidden" class="day_id " form ="deleteParts" name="day_id"><!--予約した日-->
       <input type="submit" class="btn btn-danger  d-inline-block" form ="deleteParts" onclick="return confirm('キャンセルしますか？')" value="キャンセル" >
         </div>
     </div>
   </div>
 </div>
-<form action = "/delete/calendar" method = "post" id ="deleteParts"><!--実はこれいらない。view.phpにあるから-->
+<!--<form action = "/delete/calendar" method = "post" id ="deleteParts"> <-実はこれいらない。view.phpにあるから-->
 @endsection

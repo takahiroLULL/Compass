@@ -5,19 +5,18 @@ $(function(){
     // 押されたボタンから投稿内容を取得し変数へ格納
     var day = $(this).attr('day');
 
+    var reservePartNumber = $(this).attr('reservePartNumber');
+
     var reservePart = $(this).attr('reservePart');
 
-    var id = $(this).attr('id');
+    $('.day').text(day);
 
-    $('.modal_day').text(day);
+    $('.reservePart').text(reservePart);//リモ○部
 
-    $('.modal_reservePart').text(reservePart);
+    $('.day_id').val(day);//予約した日
 
-    $('.modal_day_id').val(day);
+    $('.reservePart_id').val(reservePartNumber);//部数の値
 
-    $('.modal_reservePart_id').val(reservePart);
-
-    $('.modal_id').val(id);
 
     //.->クラス名を表す
     return false;

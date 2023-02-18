@@ -53,6 +53,7 @@ class CalendarView{
 //もしログインしてる人が予約していたら、、、
         if(in_array($day->everyDay(), $day->authReserveDay())){
           $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
+          $reservePartNumber = $day->authReserveDate($day->everyDay())->first()->setting_part;//"○部"ではなく数字単体でできるようにする変数
           if($reservePart == 1){
             $reservePart = "リモ1部";
           }else if($reservePart == 2){
@@ -71,6 +72,7 @@ class CalendarView{
              style="font-size:12px"  
              cancel="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" 
              day="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'" 
+             reservePartNumber="'.$reservePartNumber.'"
              reservePart="'.$reservePart.'"
              id="'.$day->authReserveDate($day->everyDay())->first()->id.'">
              '. $reservePart .'
