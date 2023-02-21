@@ -31,13 +31,13 @@ class CalendarWeekDay{
 
     $html[] = '<div class="text-left">';
     if($one_part){
-      $html[] = '<a href="" class="day_part m-0 pt-1"><p>1部</p></a>';
+      $html[] = '<a href="/calendar/{id}/{date}/{part}" class="day_part m-0 pt-1"><p>1部</p></a>';
     }
     if($two_part){
-      $html[] = '<a href="" class="day_part m-0 pt-1"><p>2部</p></a>';
+      $html[] = '<a href="/calendar/{id}/{data}/{part?}" class="day_part m-0 pt-1"><p>2部</p></a>';
     }
     if($three_part){
-      $html[] = '<a href="" class="day_part m-0 pt-1"><p>3部</p></a>';
+      $html[] = '<a href="/calendar/{id}/{data}/{part?}" class="day_part m-0 pt-1"><p>3部</p></a>';
     }
     $html[] = '</div>';
     return implode("", $html);
@@ -83,3 +83,6 @@ class CalendarWeekDay{
     return implode('', $html);
   }
 }
+
+
+// /calendar/{id}/{$data->date}/{$one_part->part}
