@@ -12,6 +12,9 @@
         <div class="d-flex post_status">
           <div class="mr-5">
             <i class="fa fa-comment">{{$post->postComments->count()}}</i><span class=""></span>
+            @foreach($post->subCategories as $category)
+              <span class="category_btn">{{$category->sub_category}}</spna>
+            @endforeach
           </div>
           <div>
             @if(Auth::user()->is_Like($post->id))
@@ -19,9 +22,6 @@
             @else
             <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{$like->likeCounts($post->id)}}</span></p>
             @endif
-            @foreach($post->subCategories as $category)
-             <span class="category_btn">{{$category->sub_category}}</spna>
-            @endforeach
           </div>
         </div>
       </div>
@@ -30,25 +30,25 @@
   </div>
   <div class="other_area border w-25">
     <div class="border m-4">
-      <div class=""><a href="{{ route('post.input') }}">投稿</a></div>
-      <div class="">
-        <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
-        <input type="submit" value="検索" form="postSearchRequest">
+      <div class="btn btn-primary w-100"><a href="{{ route('post.input') }}">投稿</a></div>
+      <div class="post_keyword">
+        <input type="text" style="height:35px" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
+        <input type="submit" class="btn btn-primary" style="height:35px" value="検索" form="postSearchRequest">
       </div>
       <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
       <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
       <ul>
         @foreach($categories as $category)
         <nav menu="menu">
-          <div class="menu-item">
+        <div class="menu-item">
         <div class="menu-item-btn"><p class="m-0 search_conditions"><span>{{ $category->main_category }}</span></p></div>
+        </div>
         <div class="search_conditions_inner">
         @foreach($category->subCategories as $sub_category)
         <ul>
         <input type="submit" name="sub_category" class="category_btn" value="{{$sub_category->sub_category}}" form="postSearchRequest"></li>
         </ul>
           @endforeach
-</div>
           </div>
           </nav>
         @endforeach

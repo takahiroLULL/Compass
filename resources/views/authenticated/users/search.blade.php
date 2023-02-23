@@ -72,7 +72,7 @@
         </select>
       </div>
       <div class="">
-        <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
+        <p class="m-0 search_conditions"><span type="ceeckbox">検索条件の追加</span></p>
         <div class="search_conditions_inner">
           <div>
             <label>性別</label>
@@ -99,10 +99,10 @@
         </div>
       </div>
       <div>
-        <input type="reset" value="リセット" form="userSearchRequest">
+        <input type="reset" class="btn btn-danger p-1"  value="リセット" form="userSearchRequest">
       </div>
       <div>
-        <input type="submit" name="search_btn" value="検索" form="userSearchRequest">
+        <input type="submit" name="search_btn" class="btn btn-primary " value="検索" form="userSearchRequest">
       </div>
     </div>
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
