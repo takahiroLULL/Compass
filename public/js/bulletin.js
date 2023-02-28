@@ -1,6 +1,7 @@
 $(function () {
   $('.main_categories').click(function () {
     var category_id = $(this).attr('category_id');
+    $('.slide_num' + category_id).toggleClass('active'); //反転する矢印について
     $('.category_num' + category_id).slideToggle();
   });
 

@@ -33,14 +33,22 @@ class CalendarWeekDay{
 
     $html[] = '<div class="text-left">';
     if($one_part){//一部のデータが全て入ってる
-      $html[] = '<a href="' .route('calendar.admin.detail', ['id' => $one_part->id , 'data' => $one_part->setting_reserve , 'part' => $one_part->setting_part ] ). '" class="day_part m-0 pt-1"><p>1部</p></a>';
-      $html[] = '<p class="day_part m-0 pt-1">'.$one_part->users()->count().'</p>';
+      $html[] = '<div class="text-left">';
+      $html[] = '<a href="' .route('calendar.admin.detail', ['id' => $one_part->id , 'data' => $one_part->setting_reserve , 'part' => $one_part->setting_part ] ). '" class="day_part text-primary"><span>1部</span></a>';
+      $html[] = '<span class="day_part_bu">'.$one_part->users()->count().'</span>';
+      $html[] = '</div>';
     }
     if($two_part){
-      $html[] = '<a href="/calendar/{id}/{data}/{part?}" class="day_part m-0 pt-1"><p>2部</p></a>';
+      $html[] = '<div class="">';
+      $html[] = '<a href="'  .route('calendar.admin.detail', ['id' => $two_part->id , 'data' => $two_part->setting_reserve , 'part' => $two_part->setting_part ] ). '" class="day_part text-primary"><span>2部</span></a>';
+      $html[] = '<span class="day_part_bu">'.$two_part->users()->count().'</span>';
+      $html[] = '</div>';
     }
     if($three_part){
-      $html[] = '<a href="/calendar/{id}/{data}/{part?}" class="day_part m-0 pt-1"><p>3部</p></a>';
+      $html[] = '<div class="">';
+      $html[] = '<a href="' .route('calendar.admin.detail', ['id' => $three_part->id , 'data' => $three_part->setting_reserve , 'part' => $three_part->setting_part ] ). '" class="day_part text-primary"><span>3部</span></a>';
+      $html[] = '<span class="day_part_bu">'.$three_part->users()->count().'</span>';
+      $html[] = '</div>';
     }
     $html[] = '</div>';
     return implode("", $html);
